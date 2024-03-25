@@ -1,0 +1,8 @@
+# Menos Prioritário
+Opção para ver o mapa com gap 1 ou sem gap dependendo da pessoa prefere de outra forma
+Opção para clicar para ver ou esconder o número de movimentos
+Menu para mostrar ou esconder os números dos quadrados
+Menu com opção para remover a foto do fundo (tira a imagem do fundo)
+
+# Mais dificil
+Contabilizar mudanças e conseguir voltar com Z

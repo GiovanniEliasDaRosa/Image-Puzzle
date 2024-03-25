@@ -1,0 +1,17 @@
+#particles {
+  pointer-events: none;
+  display: block;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+#particle {
+  position: absolute;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-50%);
+  transition: 0.1s ease-out;
+  /* animation: FadeOut 1s forwards; */
+  z-index: -1;
+}

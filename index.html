@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Puzzle</title>
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/information.css" />
+    <link rel="stylesheet" href="css/board.css" />
+    <link rel="stylesheet" href="css/particles.css" />
+    <link rel="stylesheet" href="css/screen.css" />
+
+    <script src="js/functions.js"></script>
+    <script src="js/main.js" async></script>
+    <script src="js/particles.js" async></script>
+  </head>
+  <body>
+    <main>
+      <div id="information">
+        <p><span id="movesSpan">Moves</span>: <span id="moves">0</span></p>
+        <a id="openImage" href="" target="_blank">Open image</a>
+        <button id="changeImageButton" class="button">Change image</button>
+      </div>
+      <div id="board" data-loading="">
+        <button class="piece" data-num="00" style="background-position: 0% 0%">
+          <p class="pieceNum">1</p>
+        </button>
+        <button class="piece" data-num="01" style="background-position: 50% 0%">
+          <p class="pieceNum">2</p>
+        </button>
+        <button class="piece" data-num="02" style="background-position: 100% 0%">
+          <p class="pieceNum">3</p>
+        </button>
+        <button class="piece" data-num="10" style="background-position: 0% 50%">
+          <p class="pieceNum">4</p>
+        </button>
+        <button class="piece" data-num="11" style="background-position: 50% 50%">
+          <p class="pieceNum">5</p>
+        </button>
+        <button class="piece" data-num="12" style="background-position: 100% 50%">
+          <p class="pieceNum">6</p>
+        </button>
+        <button class="piece" data-num="20" style="background-position: 0% 100%">
+          <p class="pieceNum">7</p>
+        </button>
+        <button class="piece" data-num="21" style="background-position: 50% 100%">
+          <p class="pieceNum">8</p>
+        </button>
+        <button class="piece" data-num="22" data-empty>
+          <p class="pieceNum"></p>
+        </button>
+      </div>
+    </main>
+
+    <div id="screen">
+      <div id="screen__div">
+        <h1>You won!</h1>
+        <p>Moves: <span id="screen__moves">99</span></p>
+        <p id="screen__timer">00:00:00:000</p>
+        <p id="screen__timer__show">hh:mm:ss:mmm</p>
+      </div>
+    </div>
+
+    <div id="credits">
+      <div id="defaultimage">
+        Photo by
+        <a
+          href="https://unsplash.com/@nickdafonseca?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+          >Nick Da Fonseca</a
+        >
+        on
+        <a
+          href="https://unsplash.com/photos/a-view-of-a-mountain-range-with-a-lake-in-the-distance-O2OpVdGlP7w?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+          >Unsplash</a
+        >
+      </div>
+      <div id="ImageCredits">
+        Images got from <a href="https://unsplash.com/" target="_blank">Unsplash</a>
+      </div>
+      <div id="MeCredits">
+        Game created by
+        <a href="https://github.com/GiovanniEliasDaRosa/" target="_blank">Giovanni Elias da Rosa</a>
+      </div>
+    </div>
+
+    <div id="particles"></div>
+    <img src="img/defaultimage.jpg" aria-disabled="true" disabled style="display: none" />
+
+    <template id="CookieParticleEffetct">
+      <!-- <img src="img/Cookie.png" alt="Cookie Image" id="particle" class="particle" /> -->
+      <div id="particle" class="particle"></div>
+    </template>
+  </body>
+</html>

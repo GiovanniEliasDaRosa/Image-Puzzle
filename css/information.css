@@ -1,0 +1,66 @@
+#information {
+  width: 100%;
+  background-color: hsl(200, 10%, 20%);
+  padding: 1em;
+  margin-bottom: 1em;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 350px) {
+  #information {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1em;
+  }
+}
+
+#changeImageButton {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+#changeImageButton::before {
+  content: "";
+  background-color: white;
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  z-index: -1;
+  transform-origin: 50% 50%;
+}
+
+#changeImageButton:is([data-timeout], [data-timeout-disable]) {
+  position: relative;
+  overflow: hidden;
+  color: gray;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+#changeImageButton[data-timeout]::before {
+  animation: 1.3s timeOutClick forwards;
+}
+
+@keyframes timeOutClick {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    transform: scaleX(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
