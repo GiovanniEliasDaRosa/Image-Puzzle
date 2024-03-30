@@ -83,10 +83,7 @@ function ChangeImage() {
 
       if (data.url == "https://images.unsplash.com/source-404?fit=crop&fm=jpg&h=800&q=60&w=1200") {
         board.setAttribute("data-error", "");
-        document.documentElement.style.setProperty(
-          "--selected",
-          "url('img/Dragon Elderflame.png')"
-        );
+        document.documentElement.style.setProperty("--selected", "url('img/defaultimage.jpg')");
         return;
       }
 
@@ -106,7 +103,10 @@ function ChangeImage() {
       board.removeAttribute("data-loading");
       board.setAttribute("data-error", "");
       changeImageButton.removeAttribute("data-timeout-disable");
-      document.documentElement.style.setProperty("--selected", "url('../img/defaultimage.jpg')");
+
+      image = "img/defaultimage.jpg";
+      openImage.href = image;
+      document.documentElement.style.setProperty("--selected", `url(../${image})`);
       Enable(defaultimage);
 
       setTimeout(() => {

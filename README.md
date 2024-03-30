@@ -1,10 +1,12 @@
 # Image Puzzle
 
+![Cover Image](https://raw.githubusercontent.com/GiovanniEliasDaRosa/Image-Puzzle/main/Cover.png)
+
 Welcome to the **Image Puzzle** game! In this game, you'll need to solve a 3x3 map by arranging the image tiles in the correct order. You can either visually organize the image or use the numbers provided to guide you.
 
 ## How to Play
 
-1. Visit my game website: [Play Image Puzzle](https://mygame.com)
+1. Visit my game website: [Play Image Puzzle](https://giovannieliasdarosa.github.io/Image-Puzzle/)
 2. Start the game and observe the scrambled image.
 3. Rearrange the tiles by dragging them to their correct positions.
 4. Use the numbers on the tiles as hints to guide your arrangement.
