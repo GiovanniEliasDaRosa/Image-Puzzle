@@ -351,9 +351,9 @@ function Won() {
   let timeinminutes = timeinseconds / 60;
   let timeinhours = timeinminutes / 60;
 
-  timeinseconds = padNumber(timeinseconds.toFixed(0), 2);
-  timeinhours = padNumber(timeinhours.toFixed(0), 2);
-  timeinminutes = padNumber(timeinminutes.toFixed(0), 2);
+  timeinseconds = padNumber(Math.floor(timeinseconds % 60), 2);
+  timeinhours = padNumber(Math.floor(timeinhours % 60), 2);
+  timeinminutes = padNumber(Math.floor(timeinminutes % 60), 2);
 
   timeinms = timeinms.toString();
   timeinms = timeinms.substr(timeinms.length - 3);
