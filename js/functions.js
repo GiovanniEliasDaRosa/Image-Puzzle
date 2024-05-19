@@ -26,3 +26,7 @@ function Enable(item) {
   item.removeAttribute("aria-disabled");
   item.style.display = "";
 }
+
+function padNumber(number, totalLength) {
+  return String(number).padStart(totalLength, "0");
+}

@@ -4,12 +4,18 @@ const pieces = [...document.querySelectorAll(".piece")];
 let animating = false;
 let moves = 0;
 const movesElement = document.querySelector("#moves");
+const showImage = document.querySelector("#showImage");
 const openImage = document.querySelector("#openImage");
 const screenElement = document.querySelector("#screen");
 const screenMoves = document.querySelector("#screen__moves");
 const screenTimer = document.querySelector("#screen__timer");
 const changeImageButton = document.querySelector("#changeImageButton");
 const defaultimage = document.querySelector("#defaultimage");
+let howToPlay = document.querySelector("#howToPlay");
+
+const tooltip = document.querySelector("#tooltip");
+const titles = [...document.querySelectorAll(".titles")];
+Disable(tooltip, true);
 
 let image = "";
 let timeoutforimageButton = "";
@@ -18,6 +24,9 @@ let won = false;
 let clickedFirstTile = false;
 let timer = 0;
 let resultedtimer = 0;
+
+let ToolTipInterval = "";
+let ToolTipTimeout = "";
 
 changeImageButton.addEventListener("click", () => {
   if (!canChangeImage) {
@@ -33,6 +42,39 @@ changeImageButton.addEventListener("click", () => {
   if (confirmAction) {
     ChangeImage();
   }
+});
+
+showImage.addEventListener("click", () => {
+  if (board.dataset.view == null) {
+    board.setAttribute("data-view", "");
+  } else {
+    board.removeAttribute("data-view");
+  }
+  RepositionToolTip(600);
+});
+
+titles.forEach((title) => {
+  title.addEventListener("touchstart", (e) => {
+    ShowTitle(title);
+  });
+  title.addEventListener("touchend", (e) => {
+    Disable(tooltip, true);
+  });
+  title.addEventListener("mouseenter", (e) => {
+    ShowTitle(title);
+  });
+  title.addEventListener("mousemove", (e) => {
+    ShowTitle(title);
+  });
+  title.addEventListener("mouseleave", (e) => {
+    Disable(tooltip, true);
+  });
+  title.addEventListener("focus", () => {
+    ShowTitle(title);
+  });
+  title.addEventListener("blur", () => {
+    Disable(tooltip, true);
+  });
 });
 
 Disable(defaultimage, true);
@@ -158,12 +200,18 @@ var map = [
   [7, 8, 0],
 ];
 
+pieces[8].classList.add("howToPlay");
+
 for (let i = 0; i < pieces.length; i++) {
   const element = pieces[i];
   element.addEventListener("click", () => {
+    if (howToPlay != null) {
+      howToPlay.remove();
+    }
     if (!clickedFirstTile) {
       timer = new Date().getTime();
       clickedFirstTile = true;
+      pieces[8].classList.remove("howToPlay");
     }
 
     board.removeAttribute("data-won");
@@ -254,7 +302,7 @@ function SeekAtDir(element, posX, posY, x, y) {
       Disable(clone);
 
       clone.style = `position: absolute; left: ${origBound.x}px; top: ${
-        window.pageYOffset + origBound.y
+        window.scrollY + origBound.y
       }px; transition: 0.25s ease-out`;
       UpdateItem(clone, posX, posY);
       animating = true;
@@ -327,10 +375,6 @@ function UpdateItem(element, x, y) {
   element.children[0].textContent = map[x][y];
 }
 
-function padNumber(number, totalLength) {
-  return String(number).padStart(totalLength, "0");
-}
-
 function Won() {
   won = true;
   particleAmout = 0;
@@ -341,6 +385,8 @@ function Won() {
   board.setAttribute("data-won", "");
   Enable(screenElement);
   screenMoves.innerText = moves;
+
+  RepositionToolTip(2100, true);
 
   if (resultedtimer == 0) {
     resultedtimer = new Date().getTime();
@@ -376,6 +422,21 @@ function ResetMap() {
   UpdateMap();
 }
 
+function ShowTitle(elem) {
+  Enable(tooltip);
+
+  let winY = window.scrollY;
+  let titleBound = elem.getBoundingClientRect();
+
+  tooltip.innerText = elem.dataset.title;
+  let tooltipBound = tooltip.getBoundingClientRect();
+
+  tooltip.style.left = `${titleBound.x - tooltipBound.width / 4}px`;
+  tooltip.style.top = `${winY + titleBound.y + titleBound.height + 16}px`;
+
+  RepositionToolTip(10, false);
+}
+
 board.addEventListener("keydown", (e) => {
   let direction = {
     x: 0,
@@ -406,5 +467,33 @@ board.addEventListener("keydown", (e) => {
 
   pieces[x * 3 + y].focus();
 });
+
+window.onresize = () => {
+  RepositionToolTip();
+};
+
+function RepositionToolTip(time = 2100, animate = false) {
+  let focusedElement = document.querySelector(".titles:focus");
+
+  clearInterval(ToolTipInterval);
+  clearInterval(ToolTipTimeout);
+
+  if (focusedElement != null) {
+    ToolTipInterval = setInterval(() => {
+      if (animate) {
+        tooltip.style.transition = "0.1s linear";
+      }
+      ShowTitle(focusedElement);
+    }, 100);
+
+    ToolTipTimeout = setTimeout(() => {
+      if (animate) {
+        tooltip.style.transition = "";
+      }
+      clearInterval(ToolTipInterval);
+      clearInterval(ToolTipTimeout);
+    }, time);
+  }
+}
 
 ChangeImage();

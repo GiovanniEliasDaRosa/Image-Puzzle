@@ -20,8 +20,15 @@
     <main>
       <div id="information">
         <p><span id="movesSpan">Moves</span>: <span id="moves">0</span></p>
-        <a id="openImage" href="" target="_blank">Open image</a>
-        <button id="changeImageButton" class="button">Change image</button>
+        <button id="showImage" class="button titles" data-title="Click to reveal image">
+          Show image
+        </button>
+        <a id="openImage" href="" target="_blank" class="titles" data-title="Click to open image"
+          >Open image</a
+        >
+        <button id="changeImageButton" class="button titles" data-title="Click to change image">
+          Change image
+        </button>
       </div>
       <div id="board" data-loading="">
         <button class="piece" data-num="00" style="background-position: 0% 0%">
@@ -51,6 +58,25 @@
         <button class="piece" data-num="22" data-empty>
           <p class="pieceNum"></p>
         </button>
+
+        <div id="howToPlay">
+          <svg
+            width="23"
+            height="24"
+            viewBox="0 0 23 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            id="howToPlayIcon"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.99994 0C7.89537 0 6.99994 0.895431 6.99994 2V14V16.1716L4.06558 13.2373C3.28453 12.4562 2.0182 12.4562 1.23715 13.2373C0.456102 14.0183 0.456101 15.2846 1.23715 16.0657L8.07095 22.8995C8.30501 23.1336 8.58265 23.2975 8.87775 23.3912C9.49284 23.777 10.2203 24 10.9999 24H18.9999C21.2091 24 22.9999 22.2091 22.9999 20V14V10C22.9999 8.89543 22.1045 8 20.9999 8C19.8954 8 18.9999 8.89543 18.9999 10V9C18.9999 7.89543 18.1045 7 16.9999 7C15.8954 7 14.9999 7.89543 14.9999 9V8C14.9999 6.89543 14.1045 6 12.9999 6C11.8954 6 10.9999 6.89543 10.9999 8V2C10.9999 0.895431 10.1045 0 8.99994 0Z"
+              fill="white"
+            />
+          </svg>
+          <p>Click or use <strong>keyboard</strong> to play</p>
+        </div>
       </div>
     </main>
 
@@ -85,6 +111,10 @@
           >Giovanni Elias da Rosa</a
         >
       </div>
+    </div>
+
+    <div id="tooltip">
+      <p>This is helpful!</p>
     </div>
 
     <div id="particles"></div>

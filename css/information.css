@@ -5,16 +5,27 @@
   margin-bottom: 1em;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   justify-content: center;
   align-items: center;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 500px) {
+  #information {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1em;
+  }
+  .button {
+    width: 8em;
+  }
+}
+
+@media (max-width: 320px) {
   #information {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 1em;
   }
 }

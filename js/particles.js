@@ -39,6 +39,7 @@ let particleAmout = 0;
 
 function CreateParticles(wherex, wherey) {
   particleAmout++;
+  if (!canChangeImage) return;
   if (particleAmout > 20) return;
 
   x = wherex;
