@@ -20,8 +20,3 @@ Welcome to the **Image Puzzle** game! In this game, you'll need to solve a 3x3 m
 ## Credits
 
 I sourced the images from [Unsplash](https://unsplash.com/), a fantastic platform for high-quality, royalty-free photos. Explore their vast collection of captivating visuals to enhance your game experience.
-
-Fixed some bugs and added new things
-
-Fixes: CSS responsivenes and deprecated proprety in JS file
-Addition: New view image button, Text Click or use keyboard to play
